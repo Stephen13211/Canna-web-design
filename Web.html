@@ -1,0 +1,1648 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canna Web Design | Professional Web Design Services</title>
+    <meta name="description" content="Professional web design services powered by AI. Affordable packages starting at R1999. SEO, hosting, and domain management included.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+/* ===========================
+   CSS Variables & Reset
+   =========================== */
+:root {
+    --primary-color: #1e40af;
+    --secondary-color: #3b82f6;
+    --accent-color: #d97706;
+    --gold: #eab308;
+    --dark-bg: #0f172a;
+    --light-bg: #f8fafc;
+    --text-dark: #1e293b;
+    --text-light: #64748b;
+    --white: #ffffff;
+    --gradient-1: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+    --gradient-2: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.15);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section {
+    padding: 100px 0;
+}
+
+/* ===========================
+   Header & Navigation
+   =========================== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-sm);
+    z-index: 1000;
+    transition: var(--transition);
+}
+
+.header.scrolled {
+    box-shadow: var(--shadow-md);
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.nav-logo .logo-img {
+    height: 50px;
+    width: auto;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+.nav-cta {
+    background: var(--gradient-1);
+    color: var(--white) !important;
+    padding: 10px 24px;
+    border-radius: 8px;
+}
+
+.nav-cta::after {
+    display: none;
+}
+
+.nav-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.nav-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-dark);
+}
+
+/* ===========================
+   WhatsApp Floating Button
+   =========================== */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: #25d366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    box-shadow: var(--shadow-lg);
+    z-index: 999;
+    transition: var(--transition);
+    animation: pulse 2s infinite;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 32px rgba(37, 211, 102, 0.4);
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* ===========================
+   Hero Section - UPDATED
+   =========================== */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: 80px;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+}
+
+.hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(30, 64, 175, 0.85) 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: var(--white);
+}
+
+/* HERO LOGO - BIG AND PROMINENT */
+.hero-logo {
+    margin-bottom: 30px;
+    animation: logoZoom 1.2s ease-out;
+}
+
+.hero-logo img {
+    width: 300px;
+    height: auto;
+    max-width: 90vw;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+}
+
+@keyframes logoZoom {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* BRAND NAME - BIG AND BOLD */
+.hero-brand-name {
+    font-size: clamp(3rem, 10vw, 7rem);
+    font-weight: 900;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 4px 20px rgba(251, 191, 36, 0.3);
+    letter-spacing: 2px;
+    animation: revealLine 1s ease forwards;
+    animation-delay: 0.3s;
+    opacity: 0;
+}
+
+.hero-title {
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.reveal-line {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: revealLine 1s ease forwards;
+}
+
+.reveal-line:nth-child(1) { animation-delay: 0.5s; }
+.reveal-line:nth-child(2) { animation-delay: 0.7s; }
+.reveal-line:nth-child(3) { animation-delay: 0.9s; }
+.reveal-line:nth-child(4) { animation-delay: 1.1s; }
+
+@keyframes revealLine {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    margin-bottom: 40px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 16px 32px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: var(--transition);
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background: var(--gold);
+    color: var(--dark-bg);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(234, 179, 8, 0.3);
+    background: #fbbf24;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+}
+
+.btn-secondary:hover {
+    background: var(--white);
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+.btn-large {
+    padding: 20px 40px;
+    font-size: 1.2rem;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.scroll-indicator span {
+    display: block;
+    width: 24px;
+    height: 40px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    position: relative;
+}
+
+.scroll-indicator span::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 2px;
+    animation: scroll 2s infinite;
+}
+
+@keyframes scroll {
+    0%, 100% { opacity: 0; transform: translateX(-50%) translateY(0); }
+    50% { opacity: 1; transform: translateX(-50%) translateY(10px); }
+}
+
+/* ===========================
+   Section Headers
+   =========================== */
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-number {
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    background: rgba(30, 64, 175, 0.1);
+    padding: 8px 20px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 800;
+    margin-bottom: 16px;
+    color: var(--dark-bg);
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-light);
+}
+
+/* ===========================
+   About Section
+   =========================== */
+.about {
+    background: var(--light-bg);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+.about-card {
+    background: var(--white);
+    padding: 40px 30px;
+    border-radius: 16px;
+    text-align: center;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.about-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+.card-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 24px;
+    background: var(--gradient-1);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 36px;
+}
+
+.about-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+    color: var(--dark-bg);
+}
+
+.about-card p {
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+/* ===========================
+   Services Section
+   =========================== */
+.services-grid {
+    display: grid;
+    gap: 40px;
+}
+
+.service-card {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.service-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.service-card:hover .service-image img {
+    transform: scale(1.1);
+}
+
+.service-content {
+    padding: 40px 40px 40px 0;
+}
+
+.service-content h3 {
+    font-size: 2rem;
+    margin-bottom: 16px;
+    color: var(--dark-bg);
+}
+
+.service-content p {
+    color: var(--text-light);
+    margin-bottom: 24px;
+    line-height: 1.8;
+}
+
+.service-features {
+    list-style: none;
+}
+
+.service-features li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+}
+
+.service-features i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+/* ===========================
+   Pricing Section
+   =========================== */
+.pricing {
+    background: var(--light-bg);
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.pricing-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    position: relative;
+    border: 2px solid transparent;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+.pricing-card.featured {
+    border-color: var(--gold);
+    transform: scale(1.05);
+}
+
+.pricing-card.featured:hover {
+    transform: scale(1.08) translateY(-10px);
+}
+
+.pricing-badge {
+    display: inline-block;
+    background: var(--gradient-1);
+    color: var(--white);
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.pricing-card.featured .pricing-badge {
+    background: var(--gold);
+    color: var(--dark-bg);
+}
+
+.pricing-card h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--dark-bg);
+}
+
+.pricing-price {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.currency {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-top: 8px;
+}
+
+.amount {
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--dark-bg);
+    line-height: 1;
+}
+
+.pricing-description {
+    color: var(--text-light);
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+.pricing-features {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.pricing-features li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    color: var(--text-dark);
+}
+
+.pricing-features i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.pricing-note {
+    background: rgba(30, 64, 175, 0.05);
+    padding: 30px;
+    border-radius: 16px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.pricing-note p {
+    color: var(--text-dark);
+    margin-bottom: 12px;
+    line-height: 1.8;
+}
+
+.pricing-note p:last-child {
+    margin-bottom: 0;
+}
+
+/* ===========================
+   Portfolio Section
+   =========================== */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.portfolio-item {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.portfolio-image {
+    position: relative;
+    aspect-ratio: 16/10;
+    overflow: hidden;
+}
+
+.portfolio-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.95) 80%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+    color: var(--white);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    opacity: 1;
+}
+
+.portfolio-item:hover .portfolio-image img {
+    transform: scale(1.1);
+}
+
+.portfolio-overlay h4 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+}
+
+.portfolio-overlay p {
+    margin-bottom: 16px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.portfolio-tag {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--dark-bg);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* ===========================
+   Testimonials Section
+   =========================== */
+.testimonials {
+    background: var(--dark-bg);
+    color: var(--white);
+    overflow: hidden;
+}
+
+.testimonials .section-title {
+    color: var(--white);
+}
+
+.testimonials .section-subtitle {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.testimonials-slider {
+    overflow: hidden;
+    margin-top: 60px;
+}
+
+.testimonial-track {
+    display: flex;
+    gap: 30px;
+    animation: marquee 40s linear infinite;
+}
+
+.testimonial-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.testimonial-card {
+    min-width: 400px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.testimonial-stars {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 20px;
+    color: var(--gold);
+}
+
+.testimonial-card p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 24px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.testimonial-author strong {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--white);
+}
+
+.testimonial-author span {
+    color: var(--gold);
+    font-size: 0.9rem;
+}
+
+/* ===========================
+   FAQ Section
+   =========================== */
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: var(--white);
+    border-radius: 12px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.faq-item:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 24px;
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--dark-bg);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.faq-question:hover {
+    color: var(--primary-color);
+}
+
+.faq-question i {
+    transition: transform 0.3s ease;
+    color: var(--primary-color);
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+}
+
+.faq-answer p {
+    padding: 0 24px 24px;
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+/* ===========================
+   CTA Section
+   =========================== */
+.cta {
+    background: var(--gradient-1);
+    color: var(--white);
+    text-align: center;
+}
+
+.cta-content h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 20px;
+}
+
+.cta-content p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* ===========================
+   Footer
+   =========================== */
+.footer {
+    background: var(--dark-bg);
+    color: rgba(255, 255, 255, 0.8);
+    padding: 60px 0 30px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 40px;
+}
+
+.footer-logo {
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+.footer-col h4 {
+    color: var(--white);
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-col ul li i {
+    color: var(--gold);
+    width: 20px;
+}
+
+.footer-col a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-col a:hover {
+    color: var(--gold);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 30px;
+    text-align: center;
+}
+
+.footer-bottom p {
+    margin-bottom: 12px;
+}
+
+.disclaimer {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* ===========================
+   Reveal Animations
+   =========================== */
+.reveal-element {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-element.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===========================
+   Responsive Design
+   =========================== */
+@media (max-width: 968px) {
+    .nav-menu {
+        position: fixed;
+        top: 90px;
+        left: -100%;
+        width: 100%;
+        background: var(--white);
+        padding: 40px 20px;
+        box-shadow: var(--shadow-lg);
+        transition: left 0.4s ease;
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .nav-list {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .nav-toggle {
+        display: block;
+    }
+    
+    .service-card {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-content {
+        padding: 40px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .testimonial-card {
+        min-width: 320px;
+    }
+    
+    .hero-logo img {
+        width: 220px;
+    }
+}
+
+@media (max-width: 640px) {
+    .section {
+        padding: 60px 0;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .pricing-card.featured {
+        transform: scale(1);
+    }
+    
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        font-size: 26px;
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .hero-logo img {
+        width: 180px;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <div class="nav-logo">
+                <img src="logo.png" alt="Canna Web Design Logo" class="logo-img">
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="#pricing" class="nav-link">Pricing</a></li>
+                    <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                    <li class="nav-item"><a href="#faq" class="nav-link">FAQ</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link nav-cta">Get Started</a></li>
+                </ul>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/27609633411" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Hero Section - UPDATED WITH BIG LOGO -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <img src="https://images.unsplash.com/photo-1487338875411-8880f74114a2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjh8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkZXNpZ24lMjB3b3Jrc3BhY2V8ZW58MHx8fHwxNzg1NzcxMzQ4fDA&ixlib=rb-4.1.0&q=85" alt="Hero Background">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content container">
+            <div class="hero-text">
+                <!-- BIG LOGO FIRST -->
+                <div class="hero-logo">
+                    <img src="logo.png" alt="Canna Web Design Logo">
+                </div>
+                
+                <!-- BIG BRAND NAME -->
+                <h1 class="hero-brand-name">CANNA WEB DESIGN</h1>
+                
+                <!-- TAGLINE -->
+                <div class="hero-title">
+                    <span class="reveal-line">Elevate Your Digital Presence</span>
+                </div>
+                <p class="hero-subtitle reveal-line">AI-Powered Web Design | Affordable Packages | Professional Results</p>
+                <div class="hero-buttons reveal-line">
+                    <a href="#pricing" class="btn btn-primary">View Packages</a>
+                    <a href="https://wa.me/27609633411" class="btn btn-secondary">Chat on WhatsApp</a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">Why Choose Canna Web Design?</h2>
+                <p class="section-subtitle">Modern solutions powered by innovation</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card reveal-element">
+                    <div class="card-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI-Powered Design</h3>
+                    <p>Leveraging cutting-edge AI technology to create stunning, modern websites faster and more efficiently.</p>
+                </div>
+                <div class="about-card reveal-element">
+                    <div class="card-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Custom Code</h3>
+                    <p>Every website is carefully crafted and customized to match your brand and business needs perfectly.</p>
+                </div>
+                <div class="about-card reveal-element">
+                    <div class="card-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Fast Delivery</h3>
+                    <p>Quick turnaround times without compromising quality. Get your website live in days, not months.</p>
+                </div>
+                <div class="about-card reveal-element">
+                    <div class="card-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h3>Affordable Pricing</h3>
+                    <p>Professional web design doesn't have to break the bank. Packages starting from just R1999.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">What You Get</h2>
+                <p class="section-subtitle">Comprehensive web design services</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal-element">
+                    <div class="service-image">
+                        <img src="https://images.pexels.com/photos/106344/pexels-photo-106344.jpeg" alt="SEO Optimization">
+                    </div>
+                    <div class="service-content">
+                        <h3>SEO Setup & Optimization</h3>
+                        <p>Complete SEO configuration including Google Search Console setup, indexing, and optimization to help your site get discovered.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Google Search Console</li>
+                            <li><i class="fas fa-check"></i> Website Indexing</li>
+                            <li><i class="fas fa-check"></i> Meta Tags & Keywords</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card reveal-element">
+                    <div class="service-image">
+                        <img src="https://images.pexels.com/photos/6289025/pexels-photo-6289025.jpeg" alt="Responsive Design">
+                    </div>
+                    <div class="service-content">
+                        <h3>Responsive Design</h3>
+                        <p>Your website will look perfect on all devices - desktop, tablet, and mobile. Modern, fast-loading pages that work everywhere.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Mobile-First Design</li>
+                            <li><i class="fas fa-check"></i> Cross-Browser Compatible</li>
+                            <li><i class="fas fa-check"></i> Fast Loading Speed</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card reveal-element">
+                    <div class="service-image">
+                        <img src="https://images.pexels.com/photos/7988114/pexels-photo-7988114.jpeg" alt="Professional Development">
+                    </div>
+                    <div class="service-content">
+                        <h3>Complete Package</h3>
+                        <p>Everything you need: domain setup, GitHub hosting, Google Business Profile creation, and ongoing support.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Domain Configuration</li>
+                            <li><i class="fas fa-check"></i> GitHub Hosting Setup</li>
+                            <li><i class="fas fa-check"></i> Business Profile Creation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing section" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">Choose Your Package</h2>
+                <p class="section-subtitle">Transparent pricing with no hidden fees</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card reveal-element">
+                    <div class="pricing-badge">Starter</div>
+                    <h3>Micro Package</h3>
+                    <div class="pricing-price">
+                        <span class="currency">R</span>
+                        <span class="amount">1,999</span>
+                    </div>
+                    <p class="pricing-description">Perfect for small businesses and startups</p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Single Landing Page</li>
+                        <li><i class="fas fa-check"></i> SEO Setup</li>
+                        <li><i class="fas fa-check"></i> Google Business Profile</li>
+                        <li><i class="fas fa-check"></i> Domain Configuration</li>
+                        <li><i class="fas fa-check"></i> GitHub Hosting</li>
+                        <li><i class="fas fa-check"></i> Mobile Responsive</li>
+                        <li><i class="fas fa-check"></i> Contact Form</li>
+                    </ul>
+                    <a href="https://wa.me/27609633411?text=Hi, I'm interested in the Micro Package (R1999)" class="btn btn-outline">Get Started</a>
+                </div>
+                <div class="pricing-card featured reveal-element">
+                    <div class="pricing-badge">Most Popular</div>
+                    <h3>Standard Package</h3>
+                    <div class="pricing-price">
+                        <span class="currency">R</span>
+                        <span class="amount">3,999</span>
+                    </div>
+                    <p class="pricing-description">Ideal for growing businesses</p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 1-3 Custom Pages</li>
+                        <li><i class="fas fa-check"></i> Advanced SEO Setup</li>
+                        <li><i class="fas fa-check"></i> Google Business Profile</li>
+                        <li><i class="fas fa-check"></i> Domain Configuration</li>
+                        <li><i class="fas fa-check"></i> GitHub Hosting</li>
+                        <li><i class="fas fa-check"></i> Mobile Responsive</li>
+                        <li><i class="fas fa-check"></i> Contact & Custom Forms</li>
+                        <li><i class="fas fa-check"></i> Image Gallery</li>
+                        <li><i class="fas fa-check"></i> Social Media Integration</li>
+                    </ul>
+                    <a href="https://wa.me/27609633411?text=Hi, I'm interested in the Standard Package (R3999)" class="btn btn-primary">Get Started</a>
+                </div>
+                <div class="pricing-card reveal-element">
+                    <div class="pricing-badge">Premium</div>
+                    <h3>Premium Package</h3>
+                    <div class="pricing-price">
+                        <span class="currency">R</span>
+                        <span class="amount">5,999</span>
+                    </div>
+                    <p class="pricing-description">Complete solution for established businesses</p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Up to 5 Custom Pages</li>
+                        <li><i class="fas fa-check"></i> Premium SEO & Analytics</li>
+                        <li><i class="fas fa-check"></i> Google Business Profile</li>
+                        <li><i class="fas fa-check"></i> Domain Configuration</li>
+                        <li><i class="fas fa-check"></i> GitHub Hosting</li>
+                        <li><i class="fas fa-check"></i> Fully Mobile Responsive</li>
+                        <li><i class="fas fa-check"></i> Multiple Custom Forms</li>
+                        <li><i class="fas fa-check"></i> Blog/News Section</li>
+                        <li><i class="fas fa-check"></i> Advanced Image Gallery</li>
+                        <li><i class="fas fa-check"></i> Social Media Integration</li>
+                        <li><i class="fas fa-check"></i> Newsletter Integration</li>
+                    </ul>
+                    <a href="https://wa.me/27609633411?text=Hi, I'm interested in the Premium Package (R5999)" class="btn btn-outline">Get Started</a>
+                </div>
+            </div>
+            <div class="pricing-note reveal-element">
+                <p><strong>Important:</strong> All packages require a yearly domain fee (subject to change with inflation). This covers domain registration and renewal costs.</p>
+                <p><strong>Disclaimer:</strong> While we implement best SEO practices, we cannot guarantee specific Google rankings as search engine algorithms are constantly evolving and depend on many factors.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio section" id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-title">Our Work</h2>
+                <p class="section-subtitle">Recent projects we're proud of</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item reveal-element">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800" alt="Business Website">
+                        <div class="portfolio-overlay">
+                            <h4>Business Consulting</h4>
+                            <p>Professional corporate website</p>
+                            <span class="portfolio-tag">Standard Package</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item reveal-element">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800" alt="E-commerce">
+                        <div class="portfolio-overlay">
+                            <h4>Retail Store</h4>
+                            <p>Modern e-commerce platform</p>
+                            <span class="portfolio-tag">Premium Package</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item reveal-element">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800" alt="Restaurant">
+                        <div class="portfolio-overlay">
+                            <h4>Restaurant</h4>
+                            <p>Beautiful landing page with menu</p>
+                            <span class="portfolio-tag">Micro Package</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item reveal-element">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800" alt="Blog">
+                        <div class="portfolio-overlay">
+                            <h4>Creative Blog</h4>
+                            <p>Content-focused design</p>
+                            <span class="portfolio-tag">Standard Package</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2 class="section-title">What Clients Say</h2>
+                <p class="section-subtitle">Real feedback from real businesses</p>
+            </div>
+            <div class="testimonials-slider">
+                <div class="testimonial-track">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Incredible service! My website was delivered faster than expected and looks absolutely professional. The SEO setup has already started bringing in customers."</p>
+                        <div class="testimonial-author">
+                            <strong>Sarah M.</strong>
+                            <span>Restaurant Owner</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Outstanding value for money! The standard package was perfect for my small business. Professional design and all the features I needed."</p>
+                        <div class="testimonial-author">
+                            <strong>John D.</strong>
+                            <span>Consulting Firm</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Very responsive and helpful! The WhatsApp communication made everything so easy. My website went live in just 5 days!"</p>
+                        <div class="testimonial-author">
+                            <strong>Linda K.</strong>
+                            <span>Boutique Owner</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Incredible service! My website was delivered faster than expected and looks absolutely professional. The SEO setup has already started bringing in customers."</p>
+                        <div class="testimonial-author">
+                            <strong>Sarah M.</strong>
+                            <span>Restaurant Owner</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Outstanding value for money! The standard package was perfect for my small business. Professional design and all the features I needed."</p>
+                        <div class="testimonial-author">
+                            <strong>John D.</strong>
+                            <span>Consulting Firm</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq section" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">06</span>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Everything you need to know</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item reveal-element">
+                    <button class="faq-question">
+                        <span>How long does it take to build my website?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Typically, a Micro package takes 3-5 days, Standard package 5-7 days, and Premium package 7-10 days. Timeline depends on content availability and feedback response times.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal-element">
+                    <button class="faq-question">
+                        <span>What's included in the domain fee?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>The yearly domain fee covers domain registration, renewal, and DNS configuration. The cost varies by domain extension (.com, .co.za, etc.) and may adjust annually due to inflation.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal-element">
+                    <button class="faq-question">
+                        <span>Can you guarantee my website will rank #1 on Google?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>No, we cannot guarantee specific rankings. We implement best SEO practices (meta tags, keywords, indexing, etc.), but Google rankings depend on many factors including competition, content quality, and algorithm changes. We set you up for success, but ongoing SEO work and content creation also play a role.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal-element">
+                    <button class="faq-question">
+                        <span>Do I need to provide content and images?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, you'll need to provide your business information, text content, and any specific images/logos. We can help guide you on what's needed and can source stock images if required.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal-element">
+                    <button class="faq-question">
+                        <span>Can I request changes after the website is live?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! Minor updates and changes can be discussed. Major redesigns or additional pages would be quoted separately. We're here to ensure your website serves your business well.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal-element">
+                    <button class="faq-question">
+                        <span>What hosting do you use?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We use GitHub Pages for hosting, which provides reliable, fast, and secure hosting for your website. It's a professional solution used by many businesses worldwide.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact/CTA Section -->
+    <section class="cta section" id="contact">
+        <div class="container">
+            <div class="cta-content reveal-element">
+                <h2>Ready to Elevate Your Business?</h2>
+                <p>Let's create something amazing together. Chat with us on WhatsApp to get started.</p>
+                <a href="https://wa.me/27609633411" class="btn btn-primary btn-large">
+                    <i class="fab fa-whatsapp"></i> Start Your Project Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <img src="logo.png" alt="Canna Web Design" class="footer-logo">
+                    <p>Professional web design services powered by AI. Creating stunning websites for businesses across South Africa.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/27609633411">060 963 3411</a></li>
+                        <li><i class="fas fa-envelope"></i> info@cannawebdesign.co.za</li>
+                        <li><i class="fas fa-map-marker-alt"></i> South Africa</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Canna Web Design. All rights reserved.</p>
+                <p class="disclaimer"><strong>Disclaimer:</strong> We implement SEO best practices but cannot guarantee specific Google rankings.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+const navToggle = document.getElementById('nav-toggle');
+const navMenu = document.getElementById('nav-menu');
+const navLinks = document.querySelectorAll('.nav-link');
+
+if (navToggle) {
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        const icon = navToggle.querySelector('i');
+        if (navMenu.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    });
+}
+
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        const icon = navToggle.querySelector('i');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+    });
+});
+
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 100) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
+const revealElements = document.querySelectorAll('.reveal-element');
+const revealOnScroll = () => {
+    const windowHeight = window.innerHeight;
+    revealElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        if (elementTop < windowHeight - 100) {
+            element.classList.add('revealed');
+        }
+    });
+};
+revealOnScroll();
+window.addEventListener('scroll', revealOnScroll);
+
+const faqQuestions = document.querySelectorAll('.faq-question');
+faqQuestions.forEach(question => {
+    question.addEventListener('click', () => {
+        const faqItem = question.parentElement;
+        const isActive = faqItem.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.classList.remove('active');
+        });
+        if (!isActive) {
+            faqItem.classList.add('active');
+        }
+    });
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            const headerHeight = header.offsetHeight;
+            window.scrollTo({
+                top: target.offsetTop - headerHeight,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+const heroContent = document.querySelector('.hero-content');
+const heroBg = document.querySelector('.hero-bg img');
+if (heroContent && heroBg) {
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
+        heroBg.style.transform = `translateY(${scrolled * 0.3}px)`;
+    });
+}
+    </script>
+</body>
+</html>
